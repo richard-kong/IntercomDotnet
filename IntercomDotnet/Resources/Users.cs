@@ -58,5 +58,14 @@ namespace IntercomDotNet.Resources
                         request.AddParameter("order", order);
                 });
         }
+
+        public dynamic GetPage(string url)
+        {
+            url = url.Replace(Client.ApiRoot, "");
+            return Client.Execute(url, Method.GET, request =>
+            {
+                request.RequestFormat = DataFormat.Json;
+            });
+        }
     }
 }
